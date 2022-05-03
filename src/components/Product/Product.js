@@ -39,16 +39,25 @@ const Product = props => {
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              {props.sizes.map((size) =>
-              (<li key={size}>
-                <button className= {clsx(currentSize === size.name && styles.active)} onClick={() => setCurrentSize(size.name)} key={shortid()}>{size.name}</button></li>))}
+              {props.sizes.map((size) => (
+                <li key={size.name}>
+                  <button className= {clsx(currentSize === size.name && styles.active)}
+                  onClick={() => setCurrentSize(size.name)} key={shortid()}>
+                    {size.name}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              {props.colors.map((color) =>
-              (<li><button type='button' className={clsx(prepareColorClassName(color), currentColor === color && styles.active)} onClick={() => setCurrentColor(color)} key={shortid()} /></li>))}
+              {props.colors.map((color) => (
+                <li key={color}>
+                  <button className={clsx(prepareColorClassName(color), currentColor === color && styles.active)}
+                  onClick={() => setCurrentColor(color)} key={shortid()}/>
+                </li>
+              ))}
             </ul>
           </div>
           <Button className={styles.button}>
