@@ -16,8 +16,18 @@ const Product = props => {
 
   const getPrice = () => {
     const price = props.sizes.find(({ name }) => name === currentSize);
-
     return props.basePrice + price.additionalPrice;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log('Summary');
+    console.log('================');
+    console.log('Name: ', props.title);
+    console.log('Price: ', getPrice(props.basePrice));
+    console.log('Size: ', currentSize);
+    console.log('Color: ', currentColor);
   };
   
   return (
@@ -55,12 +65,12 @@ const Product = props => {
               {props.colors.map((color) => (
                 <li key={color}>
                   <button className={clsx(prepareColorClassName(color), currentColor === color && styles.active)}
-                  onClick={() => setCurrentColor(color)} key={shortid()}/>
+                  onClick={() => setCurrentColor(color)} key={shortid()} />
                 </li>
               ))}
             </ul>
           </div>
-          <Button className={styles.button}>
+          <Button className={styles.button} handleSubmit={handleSubmit}>
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
