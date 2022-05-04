@@ -13,8 +13,10 @@ const Product = props => {
 
   const getPrice = useMemo (() => {
     const price = props.sizes.find(({ name }) => name === currentSize);
+
     return props.basePrice + price.additionalPrice;
-  }, [ props.basePrice, currentSize, props.sizes, ]);
+    
+  }, [ props.basePrice, currentSize, props.sizes]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,11 +32,20 @@ const Product = props => {
   return (
 
     <article className={styles.product}>
-      <ProductImage name={props.name} color={currentColor} />
+      <ProductImage
+        name={props.name}
+        color={currentColor}
+      />
       <div>
         <header>
-          <h2 className={styles.name}> {props.title} </h2>
-          <span className={styles.price}>Price: {getPrice}$ </span>
+          <h2
+            className={styles.name}>
+            {props.title}
+          </h2>
+          <span
+            className={styles.price}>
+            Price: {getPrice}$
+          </span>
         </header>
         <ProductForm
           currentColor={currentColor}

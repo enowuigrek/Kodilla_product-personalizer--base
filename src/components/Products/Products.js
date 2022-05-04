@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import productsData from '../../data/products';
 import Product from '../Product/Product';
 
@@ -7,7 +8,9 @@ const Products = () => {
 
   return (
     <section>
-      {products.map(products => <Product key={products.id} {...products} />)}
+      {products.map(
+        products => <Product key={products.id} {...products} />
+      )}
     </section>
   );
 };
